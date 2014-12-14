@@ -24,6 +24,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.fourthwavedesign.lightalarm2.DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:parentActivityName="com.fourthwavedesign.lightalarm2.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fourthwavedesign.lightalarm2.MainActivity" />
+        </activity>
+
+        <activity
+            android:name="com.fourthwavedesign.lightalarm2.FullImageActivity"
+            android:label="BAM! You\'re welcome."
+            android:parentActivityName="com.fourthwavedesign.lightalarm2.DetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fourthwavedesign.lightalarm2.DetailActivity" />
+        </activity>
+
+        <activity
+            android:name="com.fourthwavedesign.lightalarm2.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.fourthwavedesign.lightalarm2.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fourthwavedesign.lightalarm2.MainActivity" />
+        </activity>
+
+        <provider
+            android:authorities="com.fourthwavedesign.lightalarm2"
+            android:name=".data.AlarmProvider" />
     </application>
 
 </manifest>
