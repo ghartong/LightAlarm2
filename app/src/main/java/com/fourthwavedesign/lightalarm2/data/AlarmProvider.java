@@ -19,6 +19,7 @@ public class AlarmProvider extends ContentProvider {
     private AlarmDbHelper mOpenHelper;
 
     private static final int ALARM = 100;
+    private static final int ALARM_ID = 101;
 
     private static final SQLiteQueryBuilder sAlarmSettingQueryBuilder;
 
@@ -67,6 +68,8 @@ public class AlarmProvider extends ContentProvider {
 
         // For each type of URI you want to add, create a corresponding code.
         matcher.addURI(authority, AlarmContract.PATH_ALARM, ALARM);
+        matcher.addURI(authority, AlarmContract.PATH_ALARM + "/#", ALARM_ID);
+
 
 
         return matcher;
@@ -92,6 +95,19 @@ public class AlarmProvider extends ContentProvider {
                         projection,
                         selection,
                         selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
+            // "alarm/ID/*"
+            case ALARM_ID: {
+                retCursor = mOpenHelper.getReadableDatabase().query(
+                        AlarmContract.AlarmEntry.TABLE_NAME,
+                        projection,
+                        AlarmContract.AlarmEntry._ID + " = '" + ContentUris.parseId(uri) + "'",
+                        null,
                         null,
                         null,
                         sortOrder

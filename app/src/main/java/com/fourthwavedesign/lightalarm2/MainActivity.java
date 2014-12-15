@@ -1,17 +1,19 @@
 package com.fourthwavedesign.lightalarm2;
 
 
+import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.util.Date;
 
 
 public class MainActivity extends ActionBarActivity implements AlarmFragment.Callback {
@@ -23,7 +25,8 @@ public class MainActivity extends ActionBarActivity implements AlarmFragment.Cal
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_main);
+
         if (findViewById(R.id.alarm_detail_container) != null) {
             // The detail container view will be present only in the large-screen layouts
             // (res/layout-sw600dp). If this view is present, then the activity should be
@@ -42,11 +45,11 @@ public class MainActivity extends ActionBarActivity implements AlarmFragment.Cal
             mTwoPane = false;
         }
 
+
         AlarmFragment alarmFragment =  ((AlarmFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.fragment_alarm));
         alarmFragment.setUseTodayLayout(!mTwoPane);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,6 +66,10 @@ public class MainActivity extends ActionBarActivity implements AlarmFragment.Cal
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
+            return true;
+        }
+        else if (id == R.id.action_add) {
+            startActivity(new Intent(this, EnterDataActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

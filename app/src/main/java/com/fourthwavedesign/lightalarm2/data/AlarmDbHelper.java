@@ -32,12 +32,12 @@ public class AlarmDbHelper extends SQLiteOpenHelper {
                 // it's reasonable to assume the user will want information
                 // for a certain date and all dates *following*, so the alarm data
                 // should be sorted accordingly.
-                AlarmEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                AlarmEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 
                 AlarmEntry.COLUMN_DATETEXT + " TEXT NOT NULL, " +
-                AlarmEntry.COLUMN_SHORT_DESC + " TEXT NOT NULL, " +
+                AlarmEntry.COLUMN_SHORT_DESC + " TEXT NOT NULL" +
 
-                ";";
+                ");";
 
         sqLiteDatabase.execSQL(SQL_CREATE_ALARM_TABLE);
     }

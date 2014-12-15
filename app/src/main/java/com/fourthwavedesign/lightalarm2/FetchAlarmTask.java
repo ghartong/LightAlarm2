@@ -43,7 +43,7 @@ public class FetchAlarmTask extends AsyncTask<String, Void, Void> {
      * @param dateText The date string used to request updates from the server.
      * @return the row ID of the added alarm.
      */
-    private long addLocation(String dateText) {
+    private long addAlarm(String dateText) {
 
         // First, check if the alarm exists in the db
         Cursor cursor = mContext.getContentResolver().query(
@@ -67,8 +67,13 @@ public class FetchAlarmTask extends AsyncTask<String, Void, Void> {
         }
     }
 
+    private void getAlarmDataFromJson(String alarmJsonStr)
+            throws JSONException {
+
+    }
+
     @Override
     protected Void doInBackground(String... params) {
         return null;
-   }
+    }
 }

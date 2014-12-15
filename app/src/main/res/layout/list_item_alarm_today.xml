@@ -23,7 +23,9 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceLarge"
             android:fontFamily="sans-serif-condensed"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:text="TODAY XML"
+            />
 
         <TextView
             android:id="@+id/list_item_high_textview"
@@ -57,7 +59,7 @@
             android:layout_gravity="center_horizontal"/>
 
         <TextView
-            android:id="@+id/list_item_forecast_textview"
+            android:id="@+id/list_item_alarm_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"

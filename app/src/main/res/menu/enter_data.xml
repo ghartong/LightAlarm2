@@ -9,11 +9,5 @@
         android:orderInCategory="100"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_add"
-        android:icon="@drawable/ic_action_add_alarm"
-        android:title="@string/action_add"
-        android:orderInCategory="10"
-        app:showAsAction="always" />
 
 </menu>

@@ -78,7 +78,7 @@ public class AlarmContract {
         public static final String TABLE_NAME = "alarm";
 
         // Date, stored as Text with format yyyy-MM-dd
-        public static final String COLUMN_DATETEXT = "date";
+        public static final String COLUMN_DATETEXT = "alarm_date";
 
         // Short description and long description of the weather, as provided by API.
         // e.g "clear" vs "sky is clear".

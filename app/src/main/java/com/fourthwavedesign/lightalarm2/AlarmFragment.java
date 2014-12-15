@@ -8,6 +8,7 @@ package com.fourthwavedesign.lightalarm2;
         import android.support.v4.app.LoaderManager.LoaderCallbacks;
         import android.support.v4.content.CursorLoader;
         import android.support.v4.content.Loader;
+        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.Menu;
         import android.view.MenuInflater;
@@ -26,9 +27,10 @@ package com.fourthwavedesign.lightalarm2;
  */
 public class AlarmFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
+    private final String LOG_TAG = MainActivity.class.getSimpleName();
+
     private AlarmAdapter mAlarmAdapter;
 
-    private String mLocation;
     private ListView mListView;
     private int mPosition = ListView.INVALID_POSITION;
     private boolean mUseTodayLayout;
@@ -37,12 +39,12 @@ public class AlarmFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
     private static final int ALARM_LOADER = 0;
 
-    // For the forecast view we're showing only a small subset of the stored data.
+    // For the alarm view we're showing only a small subset of the stored data.
     // Specify the columns we need.
     private static final String[] ALARM_COLUMNS = {
             AlarmContract.AlarmEntry.TABLE_NAME + "." + AlarmContract.AlarmEntry._ID,
             AlarmContract.AlarmEntry.COLUMN_DATETEXT,
-            AlarmContract.AlarmEntry.COLUMN_SHORT_DESC,
+            AlarmContract.AlarmEntry.COLUMN_SHORT_DESC
     };
 
 
@@ -72,6 +74,8 @@ public class AlarmFragment extends Fragment implements LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle menu events.
         setHasOptionsMenu(true);
+        Log.v(LOG_TAG, "XXXXXXXXXXXXXXXXXXXX IN alarm fragment onCreate ");
+
     }
 
     @Override
@@ -96,9 +100,12 @@ public class AlarmFragment extends Fragment implements LoaderCallbacks<Cursor> {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        Log.v(LOG_TAG, "XXXXXXXXXXXXXXXXXXXX IN alarm fragment onCreateView ");
+
         // The ArrayAdapter will take data from a source and
         // use it to populate the ListView it's attached to.
         mAlarmAdapter = new AlarmAdapter(getActivity(), null, 0);
+        Log.v(LOG_TAG, "XXXXXXXXXXXXXXXXXXXX IN alarm fragment right after new AlarmAdapter ");
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
@@ -114,6 +121,7 @@ public class AlarmFragment extends Fragment implements LoaderCallbacks<Cursor> {
                     ((Callback)getActivity())
                             .onItemSelected(cursor.getString(COL_ALARM_ID));
                 }
+
                 mPosition = position;
             }
         });
@@ -136,6 +144,8 @@ public class AlarmFragment extends Fragment implements LoaderCallbacks<Cursor> {
     public void onActivityCreated(Bundle savedInstanceState) {
         getLoaderManager().initLoader(ALARM_LOADER, null, this);
         super.onActivityCreated(savedInstanceState);
+
+        Log.v(LOG_TAG, "XXXXXXXXXXXXXXXXXXXX IN alarm fragment onActivityCreated ");
     }
 
     private void updateAlarm() {
@@ -173,6 +183,18 @@ public class AlarmFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
         Uri alarmUri = AlarmContract.AlarmEntry.buildAlarmWithStartDate(startDate);
 
+        Log.v(LOG_TAG, "XXXXXXXXXXXXXXXXXXXX IN alarm fragment Loader ");
+        Log.v(LOG_TAG, String.valueOf(alarmUri));
+
+        Loader<Cursor> cl = new CursorLoader(
+                getActivity(),
+                alarmUri,
+                ALARM_COLUMNS,
+                null,
+                null,
+                sortOrder
+        );
+
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
         return new CursorLoader(
@@ -188,6 +210,10 @@ public class AlarmFragment extends Fragment implements LoaderCallbacks<Cursor> {
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         mAlarmAdapter.swapCursor(data);
+
+        if(loader.getId() == 0){
+            Log.v(LOG_TAG, "XXXXXXXXXXXXXXXXXXXX good start ");
+        }
         if (mPosition != ListView.INVALID_POSITION) {
             // If we don't need to restart the loader, and there's a desired position to restore
             // to, do so now.
