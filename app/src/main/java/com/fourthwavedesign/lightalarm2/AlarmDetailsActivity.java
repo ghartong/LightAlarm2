@@ -127,7 +127,7 @@ public class AlarmDetailsActivity extends Activity {
                 updateModelFromLayout();
                 AlarmManagerHelper.cancelAlarms(this);
 
-                if (alarmDetails.id < 0) {
+                if (alarmDetails.id <= 0) {
                     dbHelper.createAlarm(alarmDetails);
                 } else {
                     dbHelper.updateAlarm(alarmDetails);
