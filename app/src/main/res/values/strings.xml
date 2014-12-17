@@ -52,7 +52,7 @@
 
     <!-- PREF VARIABLES -->
     <!-- Label for the Theme preference view [CHAR LIMIT=30] -->
-    <string name="pref_theme_label">Theme</string>
+    <string name="pref_theme_label">Theme (restart required)</string>
     <!-- Labels for the Theme preference options [CHAR LIMIT=30] -->
     <string name="pref_theme_label_dark">Dark</string>
     <string name="pref_theme_label_light">Light</string>
