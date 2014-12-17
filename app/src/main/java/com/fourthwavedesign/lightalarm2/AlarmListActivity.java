@@ -80,11 +80,11 @@ public class AlarmListActivity extends ListActivity {
     public void deleteAlarm(long id) {
         final long alarmId = id;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Please confirm")
-                .setTitle("Delete set?")
+        builder.setMessage(R.string.action_confirm_delete)
+                .setTitle(R.string.title_confirm_delete)
                 .setCancelable(true)
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Ok", new OnClickListener() {
+                .setNegativeButton(R.string.label_cancel, null)
+                .setPositiveButton(R.string.label_affirmative, new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Cancel Alarms
