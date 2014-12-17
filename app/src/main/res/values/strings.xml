@@ -51,12 +51,17 @@
 
 
     <!-- PREF VARIABLES -->
-    <!-- Label for the location preference [CHAR LIMIT=30] -->
-    <string name="pref_location_label">Location</string>
-    <!-- Key name for storing location in SharedPreferences [CHAR LIMIT=NONE] -->
-    <string name="pref_location_key" translatable="false">location</string>
-    <!-- Default postal code for location preference [CHAR LIMIT=NONE] -->
-    <string name="pref_location_default" translatable="false">44312</string>
-
+    <!-- Label for the Theme preference view [CHAR LIMIT=30] -->
+    <string name="pref_theme_label">Theme</string>
+    <!-- Labels for the Theme preference options [CHAR LIMIT=30] -->
+    <string name="pref_theme_label_dark">Dark</string>
+    <string name="pref_theme_label_light">Light</string>
+    <!-- Values for the Theme preference [CHAR LIMIT=30] -->
+    <string name="pref_theme_dark" translatable="false">1</string>
+    <string name="pref_theme_light" translatable="false">2</string>
+    <!-- Key name for storing theme in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_theme_key" translatable="false">theme</string>
+    <!-- Default theme  [CHAR LIMIT=NONE] -->
+    <string name="pref_theme_default" translatable="false">1</string>
 
 </resources>

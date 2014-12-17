@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +34,9 @@ public class AlarmDetailsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //set theme from prefs
+        ThemeUtils.changeToTheme(this);
+
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_ACTION_BAR);

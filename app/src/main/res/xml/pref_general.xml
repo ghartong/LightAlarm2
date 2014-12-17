@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditTextPreference
-        android:title="@string/pref_location_label"
-        android:key="@string/pref_location_key"
-        android:defaultValue="44312"
-        android:inputType="text"
-        android:singleLine="true" />
+    <ListPreference
+        android:title="@string/pref_theme_label"
+        android:key="@string/pref_theme_key"
+        android:defaultValue="@string/pref_theme_dark"
+        android:entryValues="@array/pref_theme_values"
+        android:entries="@array/pref_theme_options" />
 
 
 </PreferenceScreen>

@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -19,6 +22,9 @@ public class AlarmListActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //change to theme in pref or default
+        ThemeUtils.changeToTheme(this);
+
         super.onCreate(savedInstanceState);
 
         mContext = this;
@@ -45,6 +51,10 @@ public class AlarmListActivity extends ListActivity {
             case R.id.action_add_new_alarm: {
                 startAlarmDetailsActivity(-1);
                 break;
+            }
+            case R.id.action_settings:{
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
             }
         }
 

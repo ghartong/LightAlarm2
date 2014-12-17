@@ -30,6 +30,15 @@
 
         <activity android:name="com.fourthwavedesign.lightalarm2.AlarmDetailsActivity" />
 
+        <activity
+            android:name="com.fourthwavedesign.lightalarm2.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.fourthwavedesign.lightalarm2.AlarmListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fourthwavedesign.lightalarm2.AlarmListActivity" />
+        </activity>
+
         <service android:name="com.fourthwavedesign.lightalarm2.AlarmService"
             android:enabled="true"/>
 

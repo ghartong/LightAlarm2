@@ -6,4 +6,10 @@
         android:icon="@drawable/ic_action_add_alarm"
         android:showAsAction="always"/>
 
+    <item
+        android:title="@string/action_settings"
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_action_add_alarm"
+        android:showAsAction="never"/>
+
 </menu>
