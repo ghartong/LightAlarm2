@@ -5,7 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="action_add">Add</string>
     <string name="action_save">Save</string>
-    <string name="action_confirm_delete">I want to completely remove this alarm</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_confirm_delete">Completely delete this alarm?</string>
 
     <!-- APP VARIABLES -->
     <string name="app_name">Light Alarm</string>
@@ -17,7 +18,9 @@
 
 
     <!-- GENERAL VARIABLES -->
-
+    <string name="hello_world">Hello World</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 
     <!-- LABEL VARIABLES -->
     <!-- message when no alarms are set -->

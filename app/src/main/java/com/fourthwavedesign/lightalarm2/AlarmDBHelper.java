@@ -88,7 +88,6 @@ public class AlarmDBHelper extends SQLiteOpenHelper {
     }
 
     public long createAlarm(AlarmModel model) {
-        Log.v("DBHelper", "here");
         ContentValues values = populateContent(model);
         return getWritableDatabase().insert(Alarm.TABLE_NAME, null, values);
     }

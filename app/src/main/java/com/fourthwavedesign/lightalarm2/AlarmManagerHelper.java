@@ -107,6 +107,7 @@ public class AlarmManagerHelper extends BroadcastReceiver {
         }
     }
 
+
     private static PendingIntent createPendingIntent(Context context, AlarmModel model) {
         Intent intent = new Intent(context, AlarmService.class);
         intent.putExtra(ID, model.id);

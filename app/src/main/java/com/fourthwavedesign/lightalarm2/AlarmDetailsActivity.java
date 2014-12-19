@@ -1,9 +1,14 @@
 package com.fourthwavedesign.lightalarm2;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -139,6 +144,48 @@ public class AlarmDetailsActivity extends Activity {
 
                 setResult(RESULT_OK);
                 finish();
+                break;
+            }
+            case R.id.action_delete_alarm: {
+                AlertDialog.Builder builder = new AlertDialog.Builder(AlarmDetailsActivity.this);
+                builder.setIcon(
+                        getResources().getDrawable(R.drawable.ic_launcher)
+                )
+                .setTitle(
+                        getResources().getString(R.string.action_delete)
+                )
+                .setMessage(
+                        getResources().getString(R.string.action_confirm_delete)
+                )
+                .setPositiveButton(R.string.yes,new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        //continue on with delete
+                        //Log.v("AlarmDetailsActivity", "Canceling id: " + alarmDetails.id);
+                        AlarmManagerHelper.cancelAlarms(AlarmDetailsActivity.this);
+
+                        //Log.v("AlarmDetailsActivity", "Deleting id: " + alarmDetails.id);
+                        if (alarmDetails.id >= 0) {
+                            int result = dbHelper.deleteAlarm(alarmDetails.id);
+                            //Log.v("AlarmDetailsActivity", "Deleted id: " + result);
+                        }
+
+                        setResult(RESULT_OK);
+                        finish();
+                   }
+                })
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+                builder.setCancelable(true);
+                AlertDialog alert = builder.create();
+                alert.show();
+
+                break;
             }
         }
 
