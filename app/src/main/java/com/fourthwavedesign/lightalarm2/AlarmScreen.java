@@ -88,12 +88,11 @@ public class AlarmScreen extends Activity {
             //posts
             String apiURL = apihost + ":" + apiport + "/" + apipath;
 
-            Log.v("AlarmScreen", "preparing to call http request to: " + apiURL);
-
+            //Log.v("AlarmScreen", "preparing to call http request to: " + apiURL);
             new RequestTask(getApplicationContext()).execute(apiURL);
 
         } catch (Exception e){
-            Log.e("AlarmScreen", "Error making call to RequestTask");
+            //Log.e("AlarmScreen", "Error making call to RequestTask");
             e.printStackTrace();
         }
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -79,6 +81,21 @@ public class AlarmListAdapter extends BaseAdapter {
         updateTextColor((TextView) view.findViewById(R.id.alarm_item_thursday), model.getRepeatingDay(AlarmModel.THURSDAY));
         updateTextColor((TextView) view.findViewById(R.id.alarm_item_friday), model.getRepeatingDay(AlarmModel.FRDIAY));
         updateTextColor((TextView) view.findViewById(R.id.alarm_item_saturday), model.getRepeatingDay(AlarmModel.SATURDAY));
+
+        //color the repeat icon
+        Boolean isRepeat = model.repeatWeekly;
+        ImageView imgView = (ImageView) view.findViewById(R.id.ic_repeat);
+        int iconColor = R.color.grey;
+        if(isRepeat) {
+/*            Drawable ic_repeat = view.getResources().getDrawable(R.drawable.ic_action_repeat);
+            int tint = Color.parseColor("#a4c639"); // android color.GREEN;
+            PorterDuff.Mode mode = PorterDuff.Mode.SRC_ATOP;
+            // add your drawable resources you wish to tint to the drawables array...
+            ic_repeat.setColorFilter(tint, mode);
+*/
+            iconColor = Color.GREEN;
+        }
+        imgView.setColorFilter(iconColor, PorterDuff.Mode.MULTIPLY);
 
         ToggleButton btnToggle = (ToggleButton) view.findViewById(R.id.alarm_item_toggle);
         btnToggle.setChecked(model.isEnabled);

@@ -105,6 +105,16 @@
             android:textColor="@color/grey_700"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
+        <ImageView
+            android:id="@+id/ic_repeat"
+            android:src="@drawable/ic_action_repeat"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@+id/alarm_item_saturday"
+            android:layout_below="@+id/alarm_item_time"
+            android:layout_marginLeft="4dp"
+            />
+
         <ToggleButton
             android:id="@+id/alarm_item_toggle"
             android:layout_width="wrap_content"
