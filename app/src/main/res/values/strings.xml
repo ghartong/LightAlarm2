@@ -64,4 +64,21 @@
     <!-- Default theme  [CHAR LIMIT=NONE] -->
     <string name="pref_theme_default" translatable="false">1</string>
 
+    <!-- Label for the API preference view [CHAR LIMIT=30] -->
+    <string name="pref_api_host_label">API Host</string>
+    <string name="pref_api_port_label">API Port</string>
+    <string name="pref_api_path_label">API Path</string>
+    <!-- Summary for the API preference view [CHAR LIMIT=30] -->
+    <string name="pref_api_host_summary">IP or Fully Qualified Domain</string>
+    <string name="pref_api_port_summary">Numbers Only</string>
+    <string name="pref_api_path_summary">Do NOT Include starting slash (/)</string>
+    <!-- Key name for storing api in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_api_host_key" translatable="false">apihost</string>
+    <string name="pref_api_port_key" translatable="false">apiport</string>
+    <string name="pref_api_path_key" translatable="false">apipath</string>
+    <!-- Default api  [CHAR LIMIT=NONE] -->
+    <string name="pref_api_host_default" translatable="false">http://jsonplaceholder.typicode.com</string>
+    <string name="pref_api_port_default" translatable="false">80</string>
+    <string name="pref_api_path_default" translatable="false">posts</string>
+
 </resources>

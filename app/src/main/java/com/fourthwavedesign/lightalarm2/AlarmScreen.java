@@ -5,6 +5,7 @@ package com.fourthwavedesign.lightalarm2;
  */
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,7 +23,7 @@ import android.widget.TextView;
 
 public class AlarmScreen extends Activity {
 
-    public final String TAG = this.getClass().getSimpleName();
+    public String TAG = this.getClass().getSimpleName();
 
     private WakeLock mWakeLock;
     private MediaPlayer mPlayer;
@@ -72,6 +74,30 @@ public class AlarmScreen extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        //make the API call to turn on lites
+        try {
+            //get api vars from prefs or default to ""
+            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+            String apihost = sharedPrefs.getString("apihost","");
+            String apiport = sharedPrefs.getString("apiport","");
+            String apipath = sharedPrefs.getString("apipath","");
+            //"http://jsonplaceholder.typicode.com"
+            //80
+            //posts
+            String apiURL = apihost + ":" + apiport + "/" + apipath;
+
+            Log.v("AlarmScreen", "preparing to call http request to: " + apiURL);
+
+            new RequestTask(getApplicationContext()).execute(apiURL);
+
+        } catch (Exception e){
+            Log.e("AlarmScreen", "Error making call to RequestTask");
+            e.printStackTrace();
+        }
+
+
 
         //Ensure wakelock release
         Runnable releaseWakelock = new Runnable() {
