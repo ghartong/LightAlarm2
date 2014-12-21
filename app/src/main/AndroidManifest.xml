@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fourthwavedesign.lightalarm2"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="1.1" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -34,6 +34,15 @@
         <activity
             android:name="com.fourthwavedesign.lightalarm2.SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:parentActivityName="com.fourthwavedesign.lightalarm2.AlarmListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fourthwavedesign.lightalarm2.AlarmListActivity" />
+        </activity>
+
+        <activity
+            android:name="com.fourthwavedesign.lightalarm2.CreditsActivity"
+            android:label="@string/title_credits_activity"
             android:parentActivityName="com.fourthwavedesign.lightalarm2.AlarmListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

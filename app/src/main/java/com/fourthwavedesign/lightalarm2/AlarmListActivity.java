@@ -56,6 +56,10 @@ public class AlarmListActivity extends ListActivity {
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             }
+            case R.id.action_credits:{
+                startActivity(new Intent(this, CreditsActivity.class));
+                return true;
+            }
         }
 
         return super.onOptionsItemSelected(item);
