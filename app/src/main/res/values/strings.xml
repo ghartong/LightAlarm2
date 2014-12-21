@@ -47,6 +47,11 @@
     <string name="label_affirmative">Yes</string>
     <string name="label_negative">No</string>
 
+    <!-- NOTIFICATION VARIABLES -->
+    <string name="notification_title">Light Alarm Notification</string>
+    <string name="notification_text">That shit just happened!</string>
+    <string name="notification_ticker">Thunder Cats HO!</string>
+
     <!-- TITLES VARIABLS -->
     <string name="title_activity_detail">Details</string>
     <string name="title_activity_settings">Settings</string>
@@ -67,19 +72,34 @@
     <!-- Default theme  [CHAR LIMIT=NONE] -->
     <string name="pref_theme_default" translatable="false">1</string>
 
+    <!-- Label for the Notification preference view [CHAR LIMIT=30] -->
+    <string name="pref_notification_label">Notification</string>
+    <!-- Summary for the notification preference view [CHAR LIMIT=30] -->
+    <string name="pref_notification_summary">Notify when alarm starts</string>
+    <!-- Key name for storing notification in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_notification_key" translatable="false">notify</string>
+    <!-- Default notification setting  [CHAR LIMIT=NONE] -->
+    <string name="pref_notification_default" translatable="false">false</string>
+
+    <!-- Heading for the API preference view [CHAR LIMIT=30] -->
+    <string name="pref_api_heading">API Information</string>
     <!-- Label for the API preference view [CHAR LIMIT=30] -->
+    <string name="pref_api_debug_label">API Debug</string>
     <string name="pref_api_host_label">API Host</string>
     <string name="pref_api_port_label">API Port</string>
     <string name="pref_api_path_label">API Path</string>
     <!-- Summary for the API preference view [CHAR LIMIT=30] -->
+    <string name="pref_api_debug_summary">Shows API connection results in a toast</string>
     <string name="pref_api_host_summary">IP or Fully Qualified Domain</string>
     <string name="pref_api_port_summary">Numbers Only</string>
     <string name="pref_api_path_summary">Do NOT Include starting slash (/)</string>
     <!-- Key name for storing api in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_api_debug_key" translatable="false">apidebug</string>
     <string name="pref_api_host_key" translatable="false">apihost</string>
     <string name="pref_api_port_key" translatable="false">apiport</string>
     <string name="pref_api_path_key" translatable="false">apipath</string>
     <!-- Default api  [CHAR LIMIT=NONE] -->
+    <string name="pref_api_debug_default" translatable="false">false</string>
     <string name="pref_api_host_default" translatable="false">http://jsonplaceholder.typicode.com</string>
     <string name="pref_api_port_default" translatable="false">80</string>
     <string name="pref_api_path_default" translatable="false">posts</string>
