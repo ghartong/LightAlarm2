@@ -36,6 +36,7 @@ public class AlarmDetailsActivity extends Activity {
     private CustomSwitch chkFriday;
     private CustomSwitch chkSaturday;
     private TextView txtToneSelection;
+    private CustomSwitch chkAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class AlarmDetailsActivity extends Activity {
         chkFriday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_friday);
         chkSaturday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_saturday);
         txtToneSelection = (TextView) findViewById(R.id.alarm_label_tone_selection);
+        chkAPI = (CustomSwitch) findViewById(R.id.alarm_details_api);
 
         long id = getIntent().getExtras().getLong("id");
 
@@ -83,6 +85,7 @@ public class AlarmDetailsActivity extends Activity {
             chkThursday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.THURSDAY));
             chkFriday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.FRDIAY));
             chkSaturday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.SATURDAY));
+            chkAPI.setChecked(alarmDetails.useAPI);
 
             txtToneSelection.setText(RingtoneManager.getRingtone(this, alarmDetails.alarmTone).getTitle(this));
         }
@@ -205,6 +208,7 @@ public class AlarmDetailsActivity extends Activity {
         alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, chkFriday.isChecked());
         alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, chkSaturday.isChecked());
         alarmDetails.isEnabled = true;
+        alarmDetails.useAPI = chkAPI.isChecked();
     }
 
 }

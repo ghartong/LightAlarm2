@@ -19,7 +19,7 @@ import com.fourthwavedesign.lightalarm2.AlarmContract.Alarm;
 
 public class AlarmDBHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 5;
     public static final String DATABASE_NAME = "lightalarmclock.db";
 
     private static final String SQL_CREATE_ALARM = "CREATE TABLE " + Alarm.TABLE_NAME + " (" +
@@ -30,7 +30,8 @@ public class AlarmDBHelper extends SQLiteOpenHelper {
             Alarm.COLUMN_NAME_ALARM_REPEAT_DAYS + " TEXT," +
             Alarm.COLUMN_NAME_ALARM_REPEAT_WEEKLY + " BOOLEAN," +
             Alarm.COLUMN_NAME_ALARM_TONE + " TEXT," +
-            Alarm.COLUMN_NAME_ALARM_ENABLED + " BOOLEAN" +
+            Alarm.COLUMN_NAME_ALARM_ENABLED + " BOOLEAN," +
+            Alarm.COLUMN_NAME_ALARM_API + " BOOLEAN" +
             " )";
 
     private static final String SQL_DELETE_ALARM =
@@ -60,6 +61,7 @@ public class AlarmDBHelper extends SQLiteOpenHelper {
         model.repeatWeekly = c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_REPEAT_WEEKLY)) == 0 ? false : true;
         model.alarmTone = c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_TONE)) != "" ? Uri.parse(c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_TONE))) : null;
         model.isEnabled = c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_ENABLED)) == 0 ? false : true;
+        model.useAPI = c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_API)) == 0 ? false : true;
 
         String[] repeatingDays = c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_REPEAT_DAYS)).split(",");
         for (int i = 0; i < repeatingDays.length; ++i) {
@@ -77,6 +79,7 @@ public class AlarmDBHelper extends SQLiteOpenHelper {
         values.put(Alarm.COLUMN_NAME_ALARM_REPEAT_WEEKLY, model.repeatWeekly);
         values.put(Alarm.COLUMN_NAME_ALARM_TONE, model.alarmTone != null ? model.alarmTone.toString() : "");
         values.put(Alarm.COLUMN_NAME_ALARM_ENABLED, model.isEnabled);
+        values.put(Alarm.COLUMN_NAME_ALARM_API, model.useAPI);
 
         String repeatingDays = "";
         for (int i = 0; i < 7; ++i) {

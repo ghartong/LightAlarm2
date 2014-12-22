@@ -23,6 +23,7 @@ public class AlarmModel {
     public Uri alarmTone;
     public String name;
     public boolean isEnabled;
+    public boolean useAPI;
 
     public AlarmModel() {
         repeatingDays = new boolean[7];

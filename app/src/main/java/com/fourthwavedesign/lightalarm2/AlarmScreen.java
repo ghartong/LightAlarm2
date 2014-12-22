@@ -41,6 +41,7 @@ public class AlarmScreen extends Activity {
         int timeHour = getIntent().getIntExtra(AlarmManagerHelper.TIME_HOUR, 0);
         int timeMinute = getIntent().getIntExtra(AlarmManagerHelper.TIME_MINUTE, 0);
         String tone = getIntent().getStringExtra(AlarmManagerHelper.TONE);
+        String useAPI = getIntent().getStringExtra(AlarmManagerHelper.USE_API);
 
         TextView tvName = (TextView) findViewById(R.id.alarm_screen_name);
         tvName.setText(name);
@@ -76,26 +77,28 @@ public class AlarmScreen extends Activity {
         }
 
 
-        //make the API call to turn on lites
-        try {
-            //get api vars from prefs or default to ""
-            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-            String apihost = sharedPrefs.getString("apihost","");
-            String apiport = sharedPrefs.getString("apiport","");
-            String apipath = sharedPrefs.getString("apipath","");
-            //"http://jsonplaceholder.typicode.com"
-            //80
-            //posts
-            String apiURL = apihost + ":" + apiport + "/" + apipath;
+        Log.v("AlarmScreen", "Use API: " + useAPI);
+        if(useAPI.equals("true")) {
+            //make the API call to turn on lites
+            try {
+                //get api vars from prefs or default to ""
+                SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+                String apihost = sharedPrefs.getString("apihost", "");
+                String apiport = sharedPrefs.getString("apiport", "");
+                String apipath = sharedPrefs.getString("apipath", "");
+                //"http://jsonplaceholder.typicode.com"
+                //80
+                //posts
+                String apiURL = apihost + ":" + apiport + "/" + apipath;
 
-            //Log.v("AlarmScreen", "preparing to call http request to: " + apiURL);
-            new RequestTask(getApplicationContext()).execute(apiURL);
+                //Log.v("AlarmScreen", "preparing to call http request to: " + apiURL);
+                new RequestTask(getApplicationContext()).execute(apiURL);
 
-        } catch (Exception e){
-            //Log.e("AlarmScreen", "Error making call to RequestTask");
-            e.printStackTrace();
+            } catch (Exception e) {
+                //Log.e("AlarmScreen", "Error making call to RequestTask");
+                e.printStackTrace();
+            }
         }
-
 
 
         //Ensure wakelock release

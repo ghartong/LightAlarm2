@@ -160,6 +160,40 @@
             style="@style/Divider"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/alarm_ringtone_container" />
+
+        <LinearLayout
+            android:id="@+id/alarm_api_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/divider3"
+            android:background="@drawable/touch_selector"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/alarm_label_api"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/details_alarm_api"
+                android:textSize="18sp" />
+
+            <com.fourthwavedesign.lightalarm2.CustomSwitch
+                android:id="@+id/alarm_details_api"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/alarm_label_api"
+                android:layout_below="@+id/alarm_label_api"
+                android:checked="true"
+                android:text="@string/details_alarm_api_default" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider5"
+            style="@style/Divider"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/alarm_ringtone_container" />
     </RelativeLayout>
 
 </ScrollView>

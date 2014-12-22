@@ -37,6 +37,8 @@
     <string name="details_saturday">Saturday</string>
     <string name="details_alarm_tone">Alarm Tone</string>
     <string name="details_alarm_tone_default">Select an alarm tone</string>
+    <string name="details_alarm_api">API</string>
+    <string name="details_alarm_api_default">Select to make API call</string>
     <string name="label_list_abr_day_0">S</string>
     <string name="label_list_abr_day_1">M</string>
     <string name="label_list_abr_day_2">T</string>

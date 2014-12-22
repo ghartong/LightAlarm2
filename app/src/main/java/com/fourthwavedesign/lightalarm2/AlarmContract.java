@@ -18,6 +18,7 @@ public final class AlarmContract {
         public static final String COLUMN_NAME_ALARM_REPEAT_WEEKLY = "weekly";
         public static final String COLUMN_NAME_ALARM_TONE = "tone";
         public static final String COLUMN_NAME_ALARM_ENABLED = "enabled";
+        public static final String COLUMN_NAME_ALARM_API = "api";
     }
 
 }
