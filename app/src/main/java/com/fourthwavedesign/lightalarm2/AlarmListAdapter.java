@@ -8,6 +8,8 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,10 +26,17 @@ public class AlarmListAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<AlarmModel> mAlarms;
+    private int mHourFormat = 12;
 
     public AlarmListAdapter(Context context, List<AlarmModel> alarms) {
         mContext = context;
         mAlarms = alarms;
+        try {
+            mHourFormat = Settings.System.getInt(context.getContentResolver(), Settings.System.TIME_12_24);
+        } catch (Settings.SettingNotFoundException e) {
+            Log.v("AlarmListAdapter", "Setting not found");
+        }
+        Log.v("AlarmListAdapter", String.valueOf(mHourFormat));
     }
 
     public void setAlarms(List<AlarmModel> alarms) {
@@ -60,7 +69,6 @@ public class AlarmListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.alarm_list_item, parent, false);
@@ -68,8 +76,25 @@ public class AlarmListAdapter extends BaseAdapter {
 
         AlarmModel model = (AlarmModel) getItem(position);
 
+        Log.v("AlarmListAdapter", String.valueOf(model.timeHour));
+        int hourFormatted = model.timeHour;
+        String ampm = "";
+        String text_time = "";
+        if(mHourFormat == 12) {
+            ampm = "AM";
+            if (model.timeHour > 12) {
+                hourFormatted = model.timeHour - 12;
+                ampm = "PM";
+            }
+            text_time = String.format("%02d : %02d", hourFormatted, model.timeMinute);
+            text_time = text_time + " " + ampm;
+        }
+        else{
+           text_time = String.format("%02d : %02d", hourFormatted, model.timeMinute);
+        }
+
         TextView txtTime = (TextView) view.findViewById(R.id.alarm_item_time);
-        txtTime.setText(String.format("%02d : %02d", model.timeHour, model.timeMinute));
+        txtTime.setText(text_time);
 
         TextView txtName = (TextView) view.findViewById(R.id.alarm_item_name);
         txtName.setText(model.name);
